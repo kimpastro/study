@@ -32,7 +32,6 @@ class BinaryTree
 
   def biggest_branch(node = root)
     return 0 if node.nil?
-    puts "Node: #{node.value}"
     
     left  = biggest_branch(node.left)
     right = biggest_branch(node.right)
