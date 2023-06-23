@@ -46,15 +46,30 @@ class BinaryTree
     puts "  " * level + node.value.to_s
     print_tree(node.right, level + 1)
   end
+
+  def find(value, node = root)
+    return "Not found" if node.nil?
+    return "Found" if node.value == value
+
+    if value < node.value
+      return find(value, node.left)
+    elsif value > node.value
+      return find(value, node.right)
+    end
+  end
 end
 
 # Running
 b_tree = BinaryTree.new
 
-10.times { b_tree.add([*1..100].sample) }
+range = [*1..100]
+10.times { b_tree.add(range.sample) }
 
 puts "First element: #{b_tree.root.value}"
 puts "Biggest branch: #{b_tree.biggest_branch}"
+
+value_to_find = range.sample
+puts "Looking for #{value_to_find}: #{b_tree.find(value_to_find)}"
 
 puts "Printing tree:"
 b_tree.print_tree
