@@ -42,9 +42,9 @@ class BinaryTree
   def print_tree(node = root, level = 0)
     return if node.nil?
   
-    print_tree(node.right, level + 1)
-    puts "  " * level + node.value.to_s
     print_tree(node.left, level + 1)
+    puts "  " * level + node.value.to_s
+    print_tree(node.right, level + 1)
   end
 end
 
